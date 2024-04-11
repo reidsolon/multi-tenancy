@@ -1,4 +1,5 @@
 ## Implementing Laravel Multi-Tenancy
+Simple implementation laravel tenancy with isolated databases.
 
 ## Prerequisites
 - `php8+`
@@ -31,6 +32,9 @@
 ## To setup tenancy
 - `php artisan tenancy:install`
 - `php artisan app:create-tenant tenant-domain1 tenant-admin-email tenant-admin-password?`
+- First argument is for domain name to be used
+- Second argument is for admin username
+- Third argument is for admin password
 - The command above creates a tenant with admin account to be used during login
 
 ## When using custom local domain
