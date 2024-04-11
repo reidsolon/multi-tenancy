@@ -1,5 +1,10 @@
 ## Implementing Laravel Multi-Tenancy
 
+## Prerequisites
+- `php8+`
+- `mysql8+`
+- `node version 16 up`
+
 ## Technologies Used
 - [Laravel@10.48.7]()
 - [Vue@3.2.7]()
