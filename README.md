@@ -29,14 +29,6 @@ Simple implementation laravel tenancy with isolated databases.
 - Update `.env` APP_DOMAIN to what you're using
 - Update `.env` DB_ configurations
 
-## To setup tenancy
-- `php artisan tenancy:install`
-- `php artisan app:create-tenant {domain} {admin-email?} {admin-password?}`
-- First argument is for domain name to be used
-- Second argument is for admin username
-- Third argument is for admin password
-- The command above creates a tenant with admin account to be used during login
-
 ## When using custom local domain
 - You need to make sure the custom domain is included in
 - `config/tenancy.php > ln:19 central_domains`
@@ -44,3 +36,11 @@ Simple implementation laravel tenancy with isolated databases.
 ## When creating a user for landlord
 - just run `php artisan main:create-user {username} {password?}`
 - this command will help you create a master user where you can add tenants
+
+## To setup tenancy (you dont need this one, you can create via super admin)
+- `php artisan tenancy:install`
+- `php artisan app:create-tenant {domain} {admin-email?} {admin-password?}`
+- First argument is for domain name to be used
+- Second argument is for admin username
+- Third argument is for admin password
+- The command above creates a tenant with admin account to be used during login
