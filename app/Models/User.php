@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -42,4 +44,42 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function cart(): HasMany
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function addToCart(Product $product): Cart|Model
+    {
+        $cart = $this->cart()->whereProductId($product->id)->first();
+
+        if ($cart)
+            return $cart;
+        else {
+            /** @var Cart */
+            return $this->cart()->create([
+                'product_id' => $product->id,
+                'amount_in_cents' => $product->price_in_cents
+            ]);
+        }
+    }
+
+    public function updateCart(Product $product, int $quantity)
+    {
+        $cart = $this->cart()->whereProductId($product->id)->first();
+        if ($cart) {
+            $cart->update([
+                'quantity' => $quantity,
+                'amount_in_cents' => $quantity * $product->price_in_cents
+            ]);
+            return $cart;
+        } else {
+            /** @var Cart */
+            return $this->cart()->create([
+                'product_id' => $product->id,
+                'amount_in_cents' => $product->price_in_cents
+            ]);
+        }
+    }
 }

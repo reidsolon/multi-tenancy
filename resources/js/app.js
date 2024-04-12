@@ -28,9 +28,21 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import ProductsTable from './components/Products/Table.vue'
+import Main from "./components/Auth/Main.vue";
+import Register from './components/Auth/Register.vue'
+import MainHeader from './components/Main/Header.vue'
+import TenantsTable from './components/Tenants/Table.vue'
+import UserHeader from './components/User/Header.vue'
+import UserHomeScreen from './components/User/Home/Home.vue'
 
 app.component('example-component', ExampleComponent);
 app.component('products-table', ProductsTable)
+app.component('main-login', Main)
+app.component('main-header', MainHeader)
+app.component('user-header', UserHeader)
+app.component('tenants-table', TenantsTable)
+app.component('home', UserHomeScreen)
+app.component('register', Register)
 
 /**
  * The following block of code may be used to automatically register your

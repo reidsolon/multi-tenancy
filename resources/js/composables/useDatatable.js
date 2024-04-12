@@ -17,10 +17,12 @@ export const useDatatable = () => {
         prev_link: null,
     })
 
-    async function getData() {
+    async function getData(url = '/', page = 1) {
         try {
-            const { data } = await axios.get('/admin/products/list', {
+            fetching.value = true
+            const { data } = await axios.get(url, {
                 params: {
+                    page,
                     limit: 10
                 }
             })
@@ -28,6 +30,8 @@ export const useDatatable = () => {
             pagination.value = data.meta
         } catch (e) {
             console.log(e)
+        } finally {
+            fetching.value = false
         }
     }
 

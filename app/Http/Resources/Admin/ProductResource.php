@@ -21,6 +21,7 @@ class ProductResource extends JsonResource
             'price' => $this->price,
             'price_in_cents' => $this->price_in_cents,
             'formatted_price' => $this->formatted_price,
+            'created_at' => $this->created_at,
 
             'photos' => JsonResource::make($this->whenLoaded('photos'))
         ];

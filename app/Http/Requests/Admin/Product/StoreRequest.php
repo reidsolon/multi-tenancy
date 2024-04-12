@@ -16,6 +16,7 @@ class StoreRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'unique:products,name'],
             'description' => ['required', 'string'],
+            'price' => ['required', 'numeric'],
             'photos' => ['array'],
             'photos.*' => ['image']
         ];

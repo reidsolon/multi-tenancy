@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\V1\Main\TenantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,11 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
+Route::get('/me', [\App\Http\Controllers\Auth\LoginController::class, 'me'])->name('me');
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/tenants', [TenantController::class, 'render'])->name('tenants.index');
+Route::get('/tenants/list', [TenantController::class, 'index'])->name('tenants.list');
+Route::resource('tenants', TenantController::class)
+    ->except('index', 'render');

@@ -42,7 +42,10 @@ class ProductController extends Controller
         return DB::transaction(function () {
             $request = request();
 
-            $product = Product::create($request->only('name', 'description'));
+            $data = $request->only('name', 'description');
+            $data['price_in_cents'] = $request->price * 100;
+
+            $product = Product::create($data);
 
             /** Save product photos here */
             if ($request->hasFile('photos'))
@@ -62,7 +65,10 @@ class ProductController extends Controller
         return DB::transaction(function () use ($product) {
             $request = request();
 
-            $product->update($request->only('name', 'description'));
+            $data = $request->only('name', 'description');
+            $data['price_in_cents'] = $request->price * 100;
+
+            $product->update($data);
 
             if ($request->has('delete_photos'))
                 collect($request->delete_photos)

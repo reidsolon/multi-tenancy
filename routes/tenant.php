@@ -24,7 +24,6 @@ Route::middleware([
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
-    Route::get('/', fn() => redirect(route('admin.login-form')));
-    Auth::routes();
+    Route::middleware('web')->group(base_path('routes/tenant/user.php'));
     Route::middleware('web')->group(base_path('routes/tenant/admin.php'));
 });

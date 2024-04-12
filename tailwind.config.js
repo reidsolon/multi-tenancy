@@ -3,6 +3,7 @@ export default {
     content: [
         "./resources/**/*.blade.php",
         "./resources/views/admin/**/*.blade.php",
+        "./resources/views/auth/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],

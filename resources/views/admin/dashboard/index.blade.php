@@ -1,5 +1,5 @@
 @extends('layouts.admin')
 
 @section('content')
-    hi
+    You are here to checkout the tenant's multi-tenancy functionalities
 @endsection
