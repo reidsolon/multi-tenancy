@@ -1,5 +1,5 @@
 ## Implementing Laravel Multi-Tenancy
-Simple implementation laravel tenancy with isolated databases.
+Simple implementation laravel tenancy
 
 ## Prerequisites
 - `php8+`
